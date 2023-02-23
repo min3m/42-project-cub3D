@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 21:24:22 by youngmch          #+#    #+#             */
-/*   Updated: 2023/02/22 21:02:24 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/02/23 18:20:35 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ t_mlx	*game_init(t_mlx *cub3d, char *name)
 	cub3d->mlx_ptr = mlx_init();
 	if (!cub3d->mlx_ptr)
 		game_exit(cub3d);
-	cub3d->win_ptr = mlx_new_window(cub3d->win_ptr, cub3d->arg->res->width,
-			cub3d->arg->res->height, name);
+	cub3d->win_ptr = mlx_new_window(cub3d->win_ptr, cub3d->arg->res.width,
+			cub3d->arg->res.height, name);
 }

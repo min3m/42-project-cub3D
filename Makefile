@@ -6,7 +6,7 @@
 #    By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 21:27:49 by youngmch          #+#    #+#              #
-#    Updated: 2023/02/22 23:33:25 by youngmch         ###   ########.fr        #
+#    Updated: 2023/02/23 19:35:29 by youngmch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,9 @@ RED = \033[31m
 sources1 :=
 
 sources1 += main.c
-sources1 += path_parsing.c
+sources1 += path_parsing1.c
+sources1 += path_parsing2.c
+sources1 += map_parsing.c
 sources1 += utils.c
 
 # ---- Bonus ---- #

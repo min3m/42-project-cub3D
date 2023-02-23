@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dongyoki <dongyoki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:27:43 by dongyoki          #+#    #+#             */
-/*   Updated: 2022/11/11 14:56:08 by dongyoki         ###   ########.fr       */
+/*   Updated: 2023/02/23 19:13:12 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
+	int		i;
 	t_list	*res;
 	t_list	*tmp;
 	void	*tmp_c;
 
 	res = 0;
+	i = 0;
 	while (lst)
 	{
-		tmp_c = f(lst->content);
-		tmp = ft_lstnew(tmp_c);
+		tmp_c = f(lst->str);
+		tmp = ft_lstnew(tmp_c, i);
 		if (!tmp)
 		{
 			ft_lstclear(&res, del);

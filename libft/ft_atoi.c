@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 10:04:33 by dongyoki          #+#    #+#             */
-/*   Updated: 2023/02/22 22:59:15 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:53:40 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ bool	ft_atoi(const char *nptr, int *num)
 		if (temp > INT_MAX)
 			return (false);
 	}
-	if (nptr[i] || temp == 0)
+	if (nptr[i] != '\n' && (nptr[i] || temp == 0))
 		return (false);
 	*num = (int)temp;
 	return (true);

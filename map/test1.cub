@@ -3,7 +3,8 @@ NO ./images/NO.xpm
 SO ./images/SO.xpm
 WE ./images/WE.xpm
 EA ./images/EA.xpm
-FF 00,153,15
+S ./images/S.xpm
+F 00,153,15
 C 255,255,255
 
         1111111111111111111111111

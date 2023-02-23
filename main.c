@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:27:14 by youngmch          #+#    #+#             */
-/*   Updated: 2023/02/22 23:34:26 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/02/23 20:54:04 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main(int argc, char **argv)
 	if (fd < 0)
 		exit(ft_putendl_fd("File open error!", 1));
 	path_parsing(&arg, fd);
+	map_parsing(&arg, fd);
 	print_struct(arg);
 	// cub3d = game_init(cub3d, argv[1]);
 	return (0);

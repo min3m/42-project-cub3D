@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:20:48 by youngmch          #+#    #+#             */
-/*   Updated: 2023/02/23 21:36:09 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:10:16 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,26 @@ bool	map_atoi(char c, int *value)
 	return (true);
 }
 
-t_map	**init_map(t_list *map_list, t_arg *arg)
+t_arg	*init_map(t_arg *arg)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < arg->y_size)
+	{
+		j = -1;
+		while (++j < arg->x_size)
+		{
+			arg->map[i][j].value = -1;
+			arg->map[i][j].x = j;
+			arg->map[i][j].y = i;
+		}
+	}
+	return (arg);
+}
+
+t_arg	*get_map(t_list *map_list, t_arg *arg)
 {
 	int		i;
 	int		j;
@@ -43,6 +62,7 @@ t_map	**init_map(t_list *map_list, t_arg *arg)
 
 	curr = map_list;
 	i = 0;
+	arg = init_map(arg);
 	while (curr)
 	{
 		j = -1;
@@ -50,16 +70,16 @@ t_map	**init_map(t_list *map_list, t_arg *arg)
 		{
 			if (!map_atoi(curr->str[j], &(arg->map[i][j].value)))
 			{
-				free_all(map_list, arg);
+				free_list(map_list);
+				free_all(arg);
 				exit(ft_putendl_fd("Wrong map argument!", 1));
 			}
-			arg->map[i][j].x = j;
-			arg->map[i][j].y = i;
 		}
 		i++;
 		curr = curr->next;
 	}
-	return (arg->map);
+	free_list(map_list);
+	return (arg);
 }
 
 t_arg	*malloc_map(t_list *map_list, t_arg *arg)
@@ -87,7 +107,7 @@ t_arg	*malloc_map(t_list *map_list, t_arg *arg)
 			exit(ft_putendl_fd("Malloc error!", 1));
 		y++;
 	}
-	arg->map = init_map(map_list, arg);
+	arg = get_map(map_list, arg);
 	return (arg);
 }
 

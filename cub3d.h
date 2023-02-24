@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:28:18 by youngmch          #+#    #+#             */
-/*   Updated: 2023/02/23 21:04:42 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/02/24 20:43:51 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <math.h>
 # include <fcntl.h>
 # include "../libft/libft.h"
+
+# define MAP 100
 
 # define NORTH 3
 # define SOUTH 4
@@ -93,15 +95,29 @@ int		get_rgb(char *tmp);
 
 void	map_parsing(t_arg *arg, int fd);
 t_arg	*malloc_map(t_list *map_list, t_arg *arg);
-t_map	**init_map(t_list *map_list, t_arg *arg);
+t_arg	*get_map(t_list *map_list, t_arg *arg);
 bool	map_atoi(char c, int *value);
 
-/* utils.c */
+/* map_parsing.c */
 
-void	free_all(t_list *list, t_arg *arg);
+void	check_valid(t_arg *arg);
+
+/* utils1.c */
+
+int		rgb_atoi(char **nptr);
 bool	free_split(char **split, int flag);
 void	free_arg(t_arg *arg);
-int		rgb_atoi(char **nptr);
+void	free_list(t_list *list);
+void	free_all(t_arg *arg);
 void	print_struct(t_arg arg); //
+
+/* utils2.c */
+
+void	ft_exit(t_arg *arg, int flag);
+
+/* game_init.c */
+
+t_mlx	*game_init(t_mlx *cub3d, t_arg *arg, char *name);
+void	game_exit(t_mlx *cub3d, int flag);
 
 #endif

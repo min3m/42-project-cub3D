@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:07:27 by youngmch          #+#    #+#             */
-/*   Updated: 2023/02/23 18:18:45 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:14:34 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	path_parsing(t_arg *arg, int fd)
 			free(tmp);
 			free_arg(arg);
 			close(fd);
-			exit(ft_putendl_fd("Map file argument error!", 1));
+			exit(ft_putendl_fd("Wrong map file argument!", 1));
 		}
 		free(tmp);
 		if (check_arg(arg))

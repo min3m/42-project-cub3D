@@ -1,45 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 20:19:17 by youngmch          #+#    #+#             */
-/*   Updated: 2023/02/23 21:38:11 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/02/24 21:58:34 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_struct(t_arg arg)
-{
-	int	i = 0;
-	int	j = 0;
+// void	print_struct(t_arg arg)
+// {
+// 	int	i = 0;
+// 	int	j = 0;
 
-	printf("WIDTH : %d\n", arg.res.width);
-	printf("HEIGHT : %d\n", arg.res.height);
-	printf("NO : %s\n", arg.root.no);
-	printf("SO : %s\n", arg.root.so);
-	printf("WE : %s\n", arg.root.we);
-	printf("EA : %s\n", arg.root.ea);
-	printf("S : %s\n", arg.root.item);
-	printf("F : %d\n", arg.floor_rgb);
-	printf("C : %d\n", arg.ceiling_rgb);
-	printf("x_size : %d\n", arg.x_size);
-	printf("y_size : %d\n", arg.y_size);
-	while (i < arg.y_size)
-	{
-		j = 0;
-		while (j < arg.x_size)
-		{
-			printf("%d", arg.map[i][j].value);
-			j++;
-		}
-		i++;
-		printf("\n");
-	}
-}
+// 	printf("WIDTH : %d\n", arg.res.width);
+// 	printf("HEIGHT : %d\n", arg.res.height);
+// 	printf("NO : %s\n", arg.root.no);
+// 	printf("SO : %s\n", arg.root.so);
+// 	printf("WE : %s\n", arg.root.we);
+// 	printf("EA : %s\n", arg.root.ea);
+// 	printf("S : %s\n", arg.root.item);
+// 	printf("F : %d\n", arg.floor_rgb);
+// 	printf("C : %d\n", arg.ceiling_rgb);
+// 	printf("x_size : %d\n", arg.x_size);
+// 	printf("y_size : %d\n", arg.y_size);
+// 	while (i < arg.y_size)
+// 	{
+// 		j = 0;
+// 		while (j < arg.x_size)
+// 		{
+// 			if (arg.map[i][j].value != -1)
+// 				printf(" ");
+// 			printf("%d", arg.map[i][j].value);
+// 			j++;
+// 		}
+// 		i++;
+// 		printf("\n");
+// 	}
+// }
 
 int	rgb_atoi(char **nptr)
 {
@@ -66,12 +68,10 @@ int	rgb_atoi(char **nptr)
 	return (nbr);
 }
 
-void	free_all(t_list *list, t_arg *arg)
+void	free_list(t_list *list)
 {
-	int		i;
 	t_list	*tmp;
 
-	i = -1;
 	while (list)
 	{
 		tmp = list->next;
@@ -79,6 +79,13 @@ void	free_all(t_list *list, t_arg *arg)
 		free(list);
 		list = tmp;
 	}
+}
+
+void	free_all(t_arg *arg)
+{
+	int		i;
+
+	i = -1;
 	while (++i < arg->y_size)
 		free(arg->map[i]);
 	free(arg->map);

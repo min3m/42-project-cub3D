@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 21:24:22 by youngmch          #+#    #+#             */
-/*   Updated: 2023/02/24 21:55:53 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/02/25 15:56:00 by youngmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,10 @@ t_mlx	*game_init(t_mlx *cub3d, t_arg *arg, char *name)
 	cub3d->mlx_ptr = mlx_init();
 	if (!cub3d->mlx_ptr)
 		game_exit(cub3d, EXIT_FAILURE);
-	cub3d->win_ptr = mlx_new_window(cub3d->mlx_ptr, cub3d->arg->res.width, \
-			cub3d->arg->res.height, name);
+	cub3d->win_ptr = mlx_new_window(cub3d->mlx_ptr, WIDTH, HEIGHT, name);
 	if (!cub3d->win_ptr)
 		game_exit(cub3d, EXIT_FAILURE);
-	cub3d->img.img = mlx_new_image(cub3d->mlx_ptr, cub3d->arg->res.width, \
-			cub3d->arg->res.height);
+	cub3d->img.img = mlx_new_image(cub3d->mlx_ptr, WIDTH, HEIGHT);
 	cub3d->img.addr = mlx_get_data_addr(cub3d->img.img, \
 			&cub3d->img.bits_per_pixel, &cub3d->img.line_size, \
 			&cub3d->img.endian);

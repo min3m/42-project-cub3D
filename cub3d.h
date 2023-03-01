@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:28:18 by youngmch          #+#    #+#             */
-/*   Updated: 2023/02/24 20:43:51 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/02/26 13:45:53 by youngmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@
 
 # define MAP 100
 
+# define WIDTH 960
+# define HEIGHT 540
+
+# define KEY_PRESS 2
+# define KEY_ESC 53
+
 # define NORTH 3
 # define SOUTH 4
 # define WEST 5
@@ -37,17 +43,11 @@ typedef struct s_data
 	int		endian;
 }				t_data;
 
-typedef struct s_res
-{
-	int	width;
-	int	height;
-}				t_res;
-
 typedef struct s_map
 {
 	int	x;
 	int	y;
-	int	value;
+	int	val;
 }				t_map;
 
 typedef struct s_files
@@ -66,10 +66,22 @@ typedef struct s_arg
 	int		x_size;
 	int		y_size;
 	t_files	root;
-	t_res	res;
 	int		floor_rgb;
 	int		ceiling_rgb;
 }				t_arg;
+
+typedef struct s_cam
+{
+	double	posX;
+	double	posY;
+	double	dirX;
+	double	dirY;
+	double	planeX;
+	double	planeY;
+
+	double	move_speed;
+	double	rot_speed;
+}				t_cam;
 
 typedef struct s_mlx
 {
@@ -77,7 +89,12 @@ typedef struct s_mlx
 	void	*win_ptr;
 	t_data	img;
 	t_arg	*arg;
+	t_cam	cam;
 }				t_mlx;
+
+/* main.c */
+
+int		game_loop(t_mlx *cub3d);
 
 /* path_parsing1.c */
 
@@ -109,7 +126,7 @@ bool	free_split(char **split, int flag);
 void	free_arg(t_arg *arg);
 void	free_list(t_list *list);
 void	free_all(t_arg *arg);
-void	print_struct(t_arg arg); //
+void	print_struct(t_mlx *cub3d); //
 
 /* utils2.c */
 
@@ -119,5 +136,21 @@ void	ft_exit(t_arg *arg, int flag);
 
 t_mlx	*game_init(t_mlx *cub3d, t_arg *arg, char *name);
 void	game_exit(t_mlx *cub3d, int flag);
+
+/* set_camera.c */
+
+void	set_cam(t_mlx **cub3d);
+void	set_dir(t_cam *cam, int val);
+
+/* key_hook.c */
+
+void	key_hook_event(t_mlx *cub3d);
+int	key_hook(int keycode, t_mlx *cub3d);
+
+/* drawing.c */
+
+void	draw_squares(t_mlx *cub3d);
+void	draw_square(t_mlx *cub3d, int x, int y, int color);
+void	my_pixel_put(t_data *img, int x, int y, int color);
 
 #endif

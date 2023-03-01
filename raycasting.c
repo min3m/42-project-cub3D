@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 19:54:08 by youngmch          #+#    #+#             */
-/*   Updated: 2023/02/25 19:10:03 by youngmin         ###   ########.fr       */
+/*   Created: 2023/02/25 18:55:54 by youngmin          #+#    #+#             */
+/*   Updated: 2023/02/25 19:09:51 by youngmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_exit(t_arg *arg, int flag)
+void	do_raycasting(t_mlx cub3d)
 {
-	free_all(arg);
-	if (flag == MAP)
-		exit(ft_putendl_fd("Map error!", 1));
+
 }

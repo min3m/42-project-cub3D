@@ -3,33 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:20:48 by youngmch          #+#    #+#             */
-/*   Updated: 2023/02/24 19:10:16 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/02/25 19:17:32 by youngmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-bool	map_atoi(char c, int *value)
+bool	map_atoi(char c, int *val)
 {
 	if (c == ' ')
-		*value = -1;
+		*val = -1;
 	else if (c == '0')
-		*value = 0;
+		*val = 0;
 	else if (c == '1')
-		*value = 1;
+		*val = 1;
 	else if (c == '2')
-		*value = 2;
+		*val = 2;
 	else if (c == 'N')
-		*value = NORTH;
+		*val = NORTH;
 	else if (c == 'S')
-		*value = SOUTH;
+		*val = SOUTH;
 	else if (c == 'W')
-		*value = WEST;
+		*val = WEST;
 	else if (c == 'E')
-		*value = EAST;
+		*val = EAST;
 	else
 		return (false);
 	return (true);
@@ -46,7 +46,7 @@ t_arg	*init_map(t_arg *arg)
 		j = -1;
 		while (++j < arg->x_size)
 		{
-			arg->map[i][j].value = -1;
+			arg->map[i][j].val = -1;
 			arg->map[i][j].x = j;
 			arg->map[i][j].y = i;
 		}
@@ -68,7 +68,7 @@ t_arg	*get_map(t_list *map_list, t_arg *arg)
 		j = -1;
 		while (curr->str[++j])
 		{
-			if (!map_atoi(curr->str[j], &(arg->map[i][j].value)))
+			if (!map_atoi(curr->str[j], &(arg->map[i][j].val)))
 			{
 				free_list(map_list);
 				free_all(arg);

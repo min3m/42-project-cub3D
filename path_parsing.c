@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_parsing1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:07:27 by youngmch          #+#    #+#             */
-/*   Updated: 2023/02/24 19:14:34 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/02/25 16:06:08 by youngmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 t_arg	*init_arg(t_arg *arg)
 {
-	arg->res.width = 0;
-	arg->res.height = 0;
 	arg->root.no = NULL;
 	arg->root.so = NULL;
 	arg->root.we = NULL;
@@ -28,8 +26,6 @@ t_arg	*init_arg(t_arg *arg)
 
 bool	check_arg(t_arg *arg)
 {
-	if (arg->res.width == 0 || arg->res.height == 0)
-		return (false);
 	if (!arg->root.no || !arg->root.so || !arg->root.we || !arg->root.ea
 		|| !arg->root.item)
 		return (false);
@@ -38,17 +34,34 @@ bool	check_arg(t_arg *arg)
 	return (true);
 }
 
+int	get_rgb(char *tmp)
+{
+	int	r;
+	int	g;
+	int	b;
+	int	rgb;
+
+	r = rgb_atoi(&tmp);
+	if (r < 0 || *tmp != ',')
+		return (-1);
+	tmp++;
+	g = rgb_atoi(&tmp);
+	if (g < 0 || *tmp != ',')
+		return (-1);
+	tmp++;
+	b = rgb_atoi(&tmp);
+	if (b < 0 || *tmp != '\n')
+		return (-1);
+	rgb = (r << 16 | g << 8 | b);
+	return (rgb);
+}
+
 bool	get_path(char *tmp, t_arg **arg)
 {
 	char	**split;
 
 	split = ft_split(tmp, ' ');
-	if (!ft_strncmp("R", split[0], 2) && !split[3])
-	{
-		if (!get_res(split[1], split[2], arg))
-			return (free_split(split, 0));
-	}
-	else if (!ft_strncmp("NO", split[0], 3) && !split[2])
+	if (!ft_strncmp("NO", split[0], 3) && !split[2])
 		(*arg)->root.no = ft_strdup(split[1]);
 	else if (!ft_strncmp("SO", split[0], 3) && !split[2])
 		(*arg)->root.so = ft_strdup(split[1]);

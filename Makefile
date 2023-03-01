@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+         #
+#    By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 21:27:49 by youngmch          #+#    #+#              #
-#    Updated: 2023/02/24 21:49:16 by youngmch         ###   ########.fr        #
+#    Updated: 2023/02/26 13:48:25 by youngmin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,13 +49,16 @@ RED = \033[31m
 sources1 :=
 
 sources1 += main.c
-sources1 += path_parsing1.c
-sources1 += path_parsing2.c
+sources1 += path_parsing.c
 sources1 += map_parsing.c
 sources1 += check_valid.c
 sources1 += utils1.c
 sources1 += utils2.c
 sources1 += game_init.c
+sources1 += set_camera.c
+sources1 += key_hook.c
+sources1 += draw_map.c
+# sources1 += raycasting.c
 
 # ---- Bonus ---- #
 

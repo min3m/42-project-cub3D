@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:28:18 by youngmch          #+#    #+#             */
-/*   Updated: 2023/02/26 13:45:53 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/03 18:17:31 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 
 # define KEY_PRESS 2
 # define KEY_ESC 53
+# define KEY_EXIT 17
+
+# define PI 3.14159265359
 
 # define NORTH 3
 # define SOUTH 4
@@ -70,14 +73,39 @@ typedef struct s_arg
 	int		ceiling_rgb;
 }				t_arg;
 
+typedef struct s_draw
+{
+	int	line_height;
+	int	draw_start;
+	int	draw_end;
+}				t_draw;
+
+typedef struct s_ray
+{
+	double	cam_x;
+	double	raydir_x;
+	double	raydir_y;
+	double	fdist_x;
+	double	fdist_y;
+	double	ndist_x;
+	double	ndist_y;
+	double	perpdist;
+
+	int		map_x;
+	int		map_y;
+	int		hit_side;
+	int		step_x;
+	int		step_y;
+}				t_ray;
+
 typedef struct s_cam
 {
-	double	posX;
-	double	posY;
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 
 	double	move_speed;
 	double	rot_speed;
@@ -90,6 +118,7 @@ typedef struct s_mlx
 	t_data	img;
 	t_arg	*arg;
 	t_cam	cam;
+	t_ray	ray;
 }				t_mlx;
 
 /* main.c */
@@ -115,8 +144,9 @@ t_arg	*malloc_map(t_list *map_list, t_arg *arg);
 t_arg	*get_map(t_list *map_list, t_arg *arg);
 bool	map_atoi(char c, int *value);
 
-/* map_parsing.c */
+/* check_valid.c */
 
+void	check_player_num(t_arg *arg);
 void	check_valid(t_arg *arg);
 
 /* utils1.c */
@@ -145,12 +175,30 @@ void	set_dir(t_cam *cam, int val);
 /* key_hook.c */
 
 void	key_hook_event(t_mlx *cub3d);
-int	key_hook(int keycode, t_mlx *cub3d);
+int		key_hook(int keycode, t_mlx *cub3d);
+int		click_exit(t_mlx *cub3d);
 
 /* drawing.c */
 
-void	draw_squares(t_mlx *cub3d);
-void	draw_square(t_mlx *cub3d, int x, int y, int color);
+// void	draw_squares(t_mlx *cub3d);
+// void	draw_square(t_mlx *cub3d, int x, int y, int color);
+// void	draw_lines(t_mlx *cub3d);
+// void	my_pixel_put(t_data *img, int x, int y, int color);
+
+/* raycasting.c */
+
+void	where_hit(t_mlx *cub3d, t_ray *ray);
+
+/* set_ray_draw.c */
+
+void	init_ray(t_mlx *cub3d, t_ray *ray, int x);
+t_ray	*init_step(t_mlx *cub3d, t_ray *ray);
+void	init_draw(t_mlx *cub3d, t_draw *draw);
+
+/* render.c */
+
+void	render_map(t_mlx *cub3d);
+void	draw_map(t_mlx *cub3d, t_ray *ray, int x);
 void	my_pixel_put(t_data *img, int x, int y, int color);
 
 #endif

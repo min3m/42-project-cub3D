@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:22:21 by youngmch          #+#    #+#             */
-/*   Updated: 2023/02/25 19:35:35 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:04:52 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	check_player_num(t_arg *arg)
+{
+	int	i;
+	int	j;
+	int	count;
+
+	count = 0;
+	i = -1;
+	while (++i < arg->y_size)
+	{
+		j = -1;
+		while (++j < arg->x_size)
+		{
+			if (arg->map[i][j].val >= NORTH && arg->map[i][j].val <= EAST)
+				count++;
+			if (count >= 2)
+				ft_exit(arg, MAP);
+		}
+	}
+}
 
 void	check_valid(t_arg *arg)
 {
@@ -38,4 +59,5 @@ void	check_valid(t_arg *arg)
 			}
 		}
 	}
+	check_player_num(arg);
 }

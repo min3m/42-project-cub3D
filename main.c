@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:27:14 by youngmch          #+#    #+#             */
-/*   Updated: 2023/02/27 22:09:48 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/03 18:20:44 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	game_loop(t_mlx *cub3d)
 {
-	draw_squares(cub3d);
-	// draw_lines(cub3d);
-	mlx_put_image_to_window(cub3d->mlx_ptr, cub3d->win_ptr, cub3d->img.img, 0 , 0);
+	render_map(cub3d);
+	mlx_put_image_to_window(cub3d->mlx_ptr, cub3d->win_ptr,
+		cub3d->img.img, 0, 0);
 	return (0);
 }
 

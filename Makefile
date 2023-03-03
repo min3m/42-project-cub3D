@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+         #
+#    By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 21:27:49 by youngmch          #+#    #+#              #
-#    Updated: 2023/02/26 13:48:25 by youngmin         ###   ########.fr        #
+#    Updated: 2023/03/03 18:09:02 by youngmch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,8 +57,10 @@ sources1 += utils2.c
 sources1 += game_init.c
 sources1 += set_camera.c
 sources1 += key_hook.c
-sources1 += draw_map.c
-# sources1 += raycasting.c
+# sources1 += draw_map.c
+sources1 += raycasting.c
+sources1 += render.c
+sources1 += set_ray_draw.c
 
 # ---- Bonus ---- #
 

@@ -3,53 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 20:19:17 by youngmch          #+#    #+#             */
-/*   Updated: 2023/02/25 19:36:31 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/03 18:18:03 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_struct(t_mlx *cub3d)
-{
-	int	i = 0;
-	int	j = 0;
+// void	print_struct(t_mlx *cub3d)
+// {
+// 	int	i = 0;
+// 	int	j = 0;
 
-	printf("WIDTH : %d\n", WIDTH);
-	printf("HEIGHT : %d\n", HEIGHT);
-	printf("NO : %s\n", cub3d->arg->root.no);
-	printf("SO : %s\n", cub3d->arg->root.so);
-	printf("WE : %s\n", cub3d->arg->root.we);
-	printf("EA : %s\n", cub3d->arg->root.ea);
-	printf("S : %s\n", cub3d->arg->root.item);
-	printf("F : %d\n", cub3d->arg->floor_rgb);
-	printf("C : %d\n", cub3d->arg->ceiling_rgb);
-	printf("x_size : %d\n", cub3d->arg->x_size);
-	printf("y_size : %d\n", cub3d->arg->y_size);
-	while (i < cub3d->arg->y_size)
-	{
-		j = 0;
-		while (j < cub3d->arg->x_size)
-		{
-			if (cub3d->arg->map[i][j].val != -1)
-				printf(" ");
-			printf("%d", cub3d->arg->map[i][j].val);
-			j++;
-		}
-		i++;
-		printf("\n");
-	}
-	printf("posX : %f\n", cub3d->cam.posX);
-	printf("posY : %f\n", cub3d->cam.posY);
-	printf("dirX : %f\n", cub3d->cam.dirX);
-	printf("dirY : %f\n", cub3d->cam.dirY);
-	printf("planeX : %f\n", cub3d->cam.planeX);
-	printf("planeX : %f\n", cub3d->cam.planeY);
-	printf("move_speed : %f\n", cub3d->cam.move_speed);
-	printf("rot_speed : %f\n", cub3d->cam.rot_speed);
-}
+// 	printf("WIDTH : %d\n", WIDTH);
+// 	printf("HEIGHT : %d\n", HEIGHT);
+// 	printf("NO : %s\n", cub3d->arg->root.no);
+// 	printf("SO : %s\n", cub3d->arg->root.so);
+// 	printf("WE : %s\n", cub3d->arg->root.we);
+// 	printf("EA : %s\n", cub3d->arg->root.ea);
+// 	printf("S : %s\n", cub3d->arg->root.item);
+// 	printf("F : %d\n", cub3d->arg->floor_rgb);
+// 	printf("C : %d\n", cub3d->arg->ceiling_rgb);
+// 	printf("x_size : %d\n", cub3d->arg->x_size);
+// 	printf("y_size : %d\n", cub3d->arg->y_size);
+// 	while (i < cub3d->arg->y_size)
+// 	{
+// 		j = 0;
+// 		while (j < cub3d->arg->x_size)
+// 		{
+// 			if (cub3d->arg->map[i][j].val != -1)
+// 				printf(" ");
+// 			printf("%d", cub3d->arg->map[i][j].val);
+// 			j++;
+// 		}
+// 		i++;
+// 		printf("\n");
+// 	}
+// 	printf("posX : %f\n", cub3d->cam.posX);
+// 	printf("posY : %f\n", cub3d->cam.posY);
+// 	printf("dirX : %f\n", cub3d->cam.dirX);
+// 	printf("dirY : %f\n", cub3d->cam.dirY);
+// 	printf("planeX : %f\n", cub3d->cam.planeX);
+// 	printf("planeX : %f\n", cub3d->cam.planeY);
+// 	printf("move_speed : %f\n", cub3d->cam.move_speed);
+// 	printf("rot_speed : %f\n", cub3d->cam.rot_speed);
+// }
 
 int	rgb_atoi(char **nptr)
 {

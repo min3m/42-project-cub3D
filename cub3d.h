@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:28:18 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/03 18:17:31 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/13 22:16:20 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,17 @@
 
 # define MAP 100
 
-# define WIDTH 960
-# define HEIGHT 540
+# define WIDTH 1920
+# define HEIGHT 1080
 
 # define KEY_PRESS 2
 # define KEY_ESC 53
+# define KEY_W 13
+# define KEY_S 1
+# define KEY_A 0
+# define KEY_D 2
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
 # define KEY_EXIT 17
 
 # define PI 3.14159265359
@@ -40,10 +46,12 @@
 typedef struct s_data
 {
 	void	*img;
-	char	*addr;
+	int		*addr;
 	int		bits_per_pixel;
 	int		line_size;
 	int		endian;
+	int		img_w;
+	int		img_h;
 }				t_data;
 
 typedef struct s_map
@@ -111,72 +119,124 @@ typedef struct s_cam
 	double	rot_speed;
 }				t_cam;
 
+typedef struct s_tex
+{
+	int		*texture;
+	double	width;
+	double	height;
+}				t_tex;
+
+typedef struct s_pixel
+{
+	double	wall_x;
+	int		tex_x;
+	int		tex_y;
+	int		color;
+	double	step_tex;
+	double	tex_pos;
+}				t_pixel;
+
+typedef struct s_draw_sprite
+{
+	double	sp_x;
+	double	sp_y;
+	double	trans_x;
+	double	trans_y;
+	int		sp_screen;
+	int		sp_height;
+	int		sp_width;
+	int		start_x;
+	int		end_x;
+	int		start_y;
+	int		end_y;
+}				t_draw_sprite;
+
+typedef struct s_sprite
+{
+	double	pos_x;
+	double	pos_y;
+	double	dist;
+}				t_sprite;
+
 typedef struct s_mlx
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_data	img;
-	t_arg	*arg;
-	t_cam	cam;
-	t_ray	ray;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_data		img;
+	t_arg		*arg;
+	t_tex		*tex;
+	t_cam		cam;
+	t_ray		ray;
+	double		zbuffer[WIDTH];
+	t_sprite	*sprite;
+	int			sprite_num;
 }				t_mlx;
 
 /* main.c */
 
-int		game_loop(t_mlx *cub3d);
+int			game_loop(t_mlx *cub3d);
 
 /* path_parsing1.c */
 
-void	path_parsing(t_arg *arg, int fd);
-bool	get_path(char *tmp, t_arg **arg);
-bool	check_arg(t_arg *arg);
-t_arg	*init_arg(t_arg *arg);
+void		path_parsing(t_arg *arg, int fd);
+bool		get_path(char *tmp, t_arg **arg);
+bool		check_arg(t_arg *arg);
+t_arg		*init_arg(t_arg *arg);
 
 /* path_parsing2.c */
 
-bool	get_res(char *w, char *h, t_arg **arg);
-int		get_rgb(char *tmp);
+bool		get_res(char *w, char *h, t_arg **arg);
+int			get_rgb(char *tmp);
 
 /* map_parsing.c */
 
-void	map_parsing(t_arg *arg, int fd);
-t_arg	*malloc_map(t_list *map_list, t_arg *arg);
-t_arg	*get_map(t_list *map_list, t_arg *arg);
-bool	map_atoi(char c, int *value);
+void		map_parsing(t_arg *arg, int fd);
+t_arg		*malloc_map(t_list *map_list, t_arg *arg);
+t_arg		*get_map(t_list *map_list, t_arg *arg);
+bool		map_atoi(char c, int *value);
 
 /* check_valid.c */
 
-void	check_player_num(t_arg *arg);
-void	check_valid(t_arg *arg);
+void		check_player_num(t_arg *arg);
+void		check_valid(t_arg *arg);
 
 /* utils1.c */
 
-int		rgb_atoi(char **nptr);
-bool	free_split(char **split, int flag);
-void	free_arg(t_arg *arg);
-void	free_list(t_list *list);
-void	free_all(t_arg *arg);
-void	print_struct(t_mlx *cub3d); //
+int			rgb_atoi(char **nptr);
+bool		free_split(char **split, int flag);
+void		free_arg(t_arg *arg);
+void		free_list(t_list *list);
+void		free_all(t_arg *arg);
+void		print_struct(t_mlx *cub3d); //
 
 /* utils2.c */
 
-void	ft_exit(t_arg *arg, int flag);
+void		ft_exit(t_arg *arg, int flag);
+void		my_pixel_put(t_data *img, int x, int y, int color);
+void		free_tex(t_mlx *cub3d);
 
 /* game_init.c */
 
-t_mlx	*game_init(t_mlx *cub3d, t_arg *arg, char *name);
-void	game_exit(t_mlx *cub3d, int flag);
+t_mlx		*game_init(t_mlx *cub3d, t_arg *arg, char *name);
+void		game_exit(t_mlx *cub3d, int flag);
+void		load_texture(t_mlx **cub3d);
+int			*get_texture(t_mlx *cub3d, char *path, t_data *img, int index);
 
 /* set_camera.c */
 
-void	set_cam(t_mlx **cub3d);
-void	set_dir(t_cam *cam, int val);
+void		set_cam(t_mlx **cub3d);
+void		set_dir(t_cam *cam, int val);
+
+/* sprite_init.c */
+
+void		sprite_init(t_mlx **cub3d);
+t_sprite	*malloc_sprite(t_mlx **cub3d);
 
 /* key_hook.c */
 
-void	key_hook_event(t_mlx *cub3d);
-int		key_hook(int keycode, t_mlx *cub3d);
-int		click_exit(t_mlx *cub3d);
+void		key_hook_event(t_mlx *cub3d);
+int			key_hook(int keycode, t_mlx *cub3d);
+int			click_exit(t_mlx *cub3d);
 
 /* drawing.c */
 
@@ -187,18 +247,40 @@ int		click_exit(t_mlx *cub3d);
 
 /* raycasting.c */
 
-void	where_hit(t_mlx *cub3d, t_ray *ray);
+void		where_hit(t_mlx *cub3d, t_ray *ray);
 
 /* set_ray_draw.c */
 
-void	init_ray(t_mlx *cub3d, t_ray *ray, int x);
-t_ray	*init_step(t_mlx *cub3d, t_ray *ray);
-void	init_draw(t_mlx *cub3d, t_draw *draw);
+void		init_ray(t_mlx *cub3d, t_ray *ray, int x);
+t_ray		*init_step(t_mlx *cub3d, t_ray *ray);
+void		init_draw(t_mlx *cub3d, t_draw *draw);
 
-/* render.c */
+/* render_wall.c */
 
-void	render_map(t_mlx *cub3d);
-void	draw_map(t_mlx *cub3d, t_ray *ray, int x);
-void	my_pixel_put(t_data *img, int x, int y, int color);
+void		render_map(t_mlx *cub3d);
+void		draw_background(t_mlx *cub3d);
+void		draw_map(t_mlx *cub3d, t_ray *ray, int x);
+void		init_pixel(t_mlx *cub3d, t_draw draw, t_tex tex, t_pixel *pixel);
+void		draw_texture(t_mlx *cub3d, t_draw draw, t_tex tex, int x);
+
+/* move_event.c */
+
+void		move_event(int keycode, t_mlx *cub3d);
+void		move_forward(t_mlx **cub3d, double dx, double dy);
+void		move_back(t_mlx **cub3d, double dx, double dy);
+void		move_left(t_mlx **cub3d, double dx, double dy);
+void		move_right(t_mlx **cub3d, double dx, double dy);
+
+/* rotate_event.c */
+
+void		rotate_event(int keycode, t_mlx *cub3d);
+void		rotate_right(t_mlx **cub3d);
+void		rotate_left(t_mlx **cub3d);
+
+/* render_sprite.c */
+
+void		draw_sprites(t_mlx *cub3d, t_tex tex);
+void		sort_sprite(t_mlx **cub3d);
+void		init_draw_sprite(t_cam cam, t_sprite sprite, t_draw_sprite *draw);
 
 #endif

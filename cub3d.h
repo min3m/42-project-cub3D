@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:28:18 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/13 22:16:20 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/14 21:16:34 by youngmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 
 # define MAP 100
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 1152
+# define HEIGHT 648
 
 # define KEY_PRESS 2
 # define KEY_ESC 53
@@ -36,12 +36,12 @@
 # define KEY_RIGHT 124
 # define KEY_EXIT 17
 
-# define PI 3.14159265359
-
 # define NORTH 3
 # define SOUTH 4
 # define WEST 5
 # define EAST 6
+
+#define MOVE_DOWN 64
 
 typedef struct s_data
 {
@@ -149,6 +149,7 @@ typedef struct s_draw_sprite
 	int		end_x;
 	int		start_y;
 	int		end_y;
+	int		s_move;
 }				t_draw_sprite;
 
 typedef struct s_sprite
@@ -282,5 +283,6 @@ void		rotate_left(t_mlx **cub3d);
 void		draw_sprites(t_mlx *cub3d, t_tex tex);
 void		sort_sprite(t_mlx **cub3d);
 void		init_draw_sprite(t_cam cam, t_sprite sprite, t_draw_sprite *draw);
+void		draw_sprite(t_mlx *cub3d, t_tex tex, t_draw_sprite draw);
 
 #endif

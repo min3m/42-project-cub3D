@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 18:55:54 by youngmin          #+#    #+#             */
-/*   Updated: 2023/03/12 22:53:28 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:32:35 by youngmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	where_hit(t_mlx *cub3d, t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->hit_side = 1;
 		}
-		if (cub3d->arg->map[ray->map_y][ray->map_x].val > 0)
+		if (cub3d->arg->map[ray->map_y][ray->map_x].val == 1)
 			hit = 1;
 	}
 }

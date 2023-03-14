@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_sprite.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:02:37 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/13 22:15:58 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/14 21:15:29 by youngmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	sort_sprite(t_mlx **cub3d)
 		y = x;
 		while (++y < (*cub3d)->sprite_num)
 		{
-			if ((*cub3d)->sprite[x].dist > (*cub3d)->sprite[y].dist)
+			if ((*cub3d)->sprite[x].dist < (*cub3d)->sprite[y].dist)
 			{
 				temp = (*cub3d)->sprite[x];
 				(*cub3d)->sprite[x] = (*cub3d)->sprite[y];
@@ -46,10 +46,11 @@ void	init_draw_sprite(t_cam cam, t_sprite sprite, t_draw_sprite *draw)
 			+ cam.plane_x * draw->sp_y);
 	draw->sp_screen = (int)(WIDTH / 2 * (1 + draw->trans_x / draw->trans_y));
 	draw->sp_height = abs((int)(HEIGHT / draw->trans_y));
-	draw->start_y = -draw->sp_height / 2 + HEIGHT / 2;
+	draw->s_move = (int)(MOVE_DOWN / draw->trans_y);
+	draw->start_y = -draw->sp_height / 2 + HEIGHT / 2 + draw->s_move;
 	if (draw->start_y < 0)
 		draw->start_y = 0;
-	draw->end_y = draw->sp_height / 2 + HEIGHT / 2;
+	draw->end_y = draw->sp_height / 2 + HEIGHT / 2 + draw->s_move;
 	if (draw->end_y >= HEIGHT)
 		draw->end_y = HEIGHT - 1;
 	draw->sp_width = abs((int)(HEIGHT / draw->trans_y));
@@ -61,17 +62,45 @@ void	init_draw_sprite(t_cam cam, t_sprite sprite, t_draw_sprite *draw)
 		draw->end_x = WIDTH - 1;
 }
 
+void	draw_sprite(t_mlx *cub3d, t_tex tex, t_draw_sprite draw)
+{
+	int	x;
+	int	y;
+	int	tex_x;
+	int	tex_y;
+	int	color;
+
+	x = draw.start_x - 1;
+	while (++x < draw.end_x)
+	{
+		tex_x = (int)(256 * (x - (-draw.sp_width / 2 + draw.sp_screen))
+			* tex.width / draw.sp_width) / 256;
+		if (draw.trans_y > 0 && x > 0 && x < WIDTH
+			&& draw.trans_y < cub3d->zbuffer[x])
+		{
+			y = draw.start_y - 1;
+			while (++y < draw.end_y)
+			{
+				tex_y = ((y - draw.s_move) * 256 - HEIGHT * 128 + draw.sp_height * 128)
+					* tex.height / draw.sp_height / 256;
+				color = tex.texture[(int)tex.width * tex_y + tex_x];
+				if ((color & 0x00FFFFFF) != 0)
+					my_pixel_put(&(cub3d->img), x, y, color);
+			}
+		}
+	}
+}
+
 void	draw_sprites(t_mlx *cub3d, t_tex tex)
 {
 	int				i;
-	int				j;
 	t_draw_sprite	draw;
 
-	(void) tex;
 	sort_sprite(&cub3d);
 	i = -1;
 	while (++i < cub3d->sprite_num)
 	{
 		init_draw_sprite(cub3d->cam, cub3d->sprite[i], &draw);
+		draw_sprite(cub3d, tex, draw);
 	}
 }

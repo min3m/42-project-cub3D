@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_wall.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:07:40 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/13 21:48:46 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:25:54 by youngmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,14 @@ void	draw_map(t_mlx *cub3d, t_ray *ray, int x)
 	t_draw	draw;
 
 	init_draw(cub3d, &draw);
-	if (cub3d->arg->map[ray->map_y][ray->map_x].val == 1)
-	{
-		if (ray->hit_side == 1 && ray->raydir_y < 0)
-			draw_texture(cub3d, draw, cub3d->tex[0], x);
-		else if (ray->hit_side == 1 && ray->raydir_y >= 0)
-			draw_texture(cub3d, draw, cub3d->tex[1], x);
-		else if (ray->hit_side == 0 && ray->raydir_x < 0)
-			draw_texture(cub3d, draw, cub3d->tex[2], x);
-		else if (ray->hit_side == 0 && ray->raydir_x >= 0)
-			draw_texture(cub3d, draw, cub3d->tex[3], x);
-	}
+	if (ray->hit_side == 1 && ray->raydir_y < 0)
+		draw_texture(cub3d, draw, cub3d->tex[0], x);
+	else if (ray->hit_side == 1 && ray->raydir_y >= 0)
+		draw_texture(cub3d, draw, cub3d->tex[1], x);
+	else if (ray->hit_side == 0 && ray->raydir_x < 0)
+		draw_texture(cub3d, draw, cub3d->tex[2], x);
+	else if (ray->hit_side == 0 && ray->raydir_x >= 0)
+		draw_texture(cub3d, draw, cub3d->tex[3], x);
 }
 
 void	render_map(t_mlx *cub3d)
@@ -101,5 +98,5 @@ void	render_map(t_mlx *cub3d)
 		draw_map(cub3d, &(cub3d->ray), x);
 		cub3d->zbuffer[x] = cub3d->ray.perpdist;
 	}
-	draw_sprite(cub3d, cub3d->tex[4]);
+	draw_sprites(cub3d, cub3d->tex[4]);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprite_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 21:01:59 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/13 21:34:25 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:47:57 by youngmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	sprite_init(t_mlx **cub3d)
 		{
 			if ((*cub3d)->arg->map[y][x].val == 2)
 			{
-				(*cub3d)->sprite[index].pos_x = x;
-				(*cub3d)->sprite[index].pos_y = y;
+				(*cub3d)->sprite[index].pos_x = x + 0.5;
+				(*cub3d)->sprite[index].pos_y = y + 0.5;
 				(*cub3d)->sprite[index].dist = (pow((*cub3d)->cam.pos_x - x, 2)
 						+ pow((*cub3d)->cam.pos_y - y, 2));
 				index++;

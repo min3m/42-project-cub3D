@@ -6,7 +6,7 @@
 #    By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 21:27:49 by youngmch          #+#    #+#              #
-#    Updated: 2023/03/13 21:15:59 by youngmch         ###   ########.fr        #
+#    Updated: 2023/03/15 19:52:27 by youngmch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,9 +58,9 @@ sources1 += game_init.c
 sources1 += set_camera.c
 sources1 += sprite_init.c
 sources1 += key_hook.c
-# sources1 += draw_map.c
+sources1 += draw_minimap.c
 sources1 += raycasting.c
-sources1 += render_wall.c
+sources1 += render_map.c
 sources1 += render_sprite.c
 sources1 += set_ray_draw.c
 sources1 += move_event.c

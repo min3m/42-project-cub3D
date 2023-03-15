@@ -6,11 +6,18 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:54:08 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/13 19:00:45 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/15 19:51:08 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	exit_map(t_arg *arg, t_list *map_list)
+{
+	free_arg(arg);
+	free_list(map_list);
+	exit(ft_putendl_fd("Map error!", 1));
+}
 
 void	free_tex(t_mlx *cub3d)
 {

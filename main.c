@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:27:14 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/13 21:26:56 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/15 22:25:41 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 int	game_loop(t_mlx *cub3d)
 {
+	static int	count = 0;
+
+	count++;
+	if (count <= 100)
+		return (1);
+	count = 0;
 	draw_background(cub3d);
 	render_map(cub3d);
 	mlx_put_image_to_window(cub3d->mlx_ptr, cub3d->win_ptr,
@@ -39,7 +45,6 @@ int	main(int argc, char **argv)
 	cub3d = game_init(cub3d, &arg, argv[1]);
 	set_cam(&cub3d);
 	sprite_init(&cub3d);
-	// print_struct(cub3d);
 	key_hook_event(cub3d);
 	return (0);
 }

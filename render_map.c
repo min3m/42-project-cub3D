@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_wall.c                                      :+:      :+:    :+:   */
+/*   render_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:07:40 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/14 20:25:54 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/15 22:14:35 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,6 @@ void	render_map(t_mlx *cub3d)
 		draw_map(cub3d, &(cub3d->ray), x);
 		cub3d->zbuffer[x] = cub3d->ray.perpdist;
 	}
-	draw_sprites(cub3d, cub3d->tex[4]);
+	draw_sprites(cub3d, change_sprite(cub3d->tex));
+	draw_minimap(cub3d);
 }

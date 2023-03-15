@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:28:18 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/14 21:16:34 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/15 21:59:25 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 
 # define MAP 100
 
-# define WIDTH 1152
-# define HEIGHT 648
+# define WIDTH 1920
+# define HEIGHT 1080
 
 # define KEY_PRESS 2
 # define KEY_ESC 53
@@ -41,7 +41,10 @@
 # define WEST 5
 # define EAST 6
 
-#define MOVE_DOWN 64
+# define DOOR_CLOSE 7
+# define DOOR_OPEN 8
+
+# define MOVE_DOWN 64
 
 typedef struct s_data
 {
@@ -67,7 +70,8 @@ typedef struct s_files
 	char	*so;
 	char	*we;
 	char	*ea;
-	char	*item;
+	char	*sprite1;
+	char	*sprite2;
 }				t_files;
 
 typedef struct s_arg
@@ -212,6 +216,7 @@ void		print_struct(t_mlx *cub3d); //
 
 /* utils2.c */
 
+void		exit_map(t_arg *arg, t_list *map_list);
 void		ft_exit(t_arg *arg, int flag);
 void		my_pixel_put(t_data *img, int x, int y, int color);
 void		free_tex(t_mlx *cub3d);
@@ -239,12 +244,12 @@ void		key_hook_event(t_mlx *cub3d);
 int			key_hook(int keycode, t_mlx *cub3d);
 int			click_exit(t_mlx *cub3d);
 
-/* drawing.c */
+/* draw_minimap.c */
 
-// void	draw_squares(t_mlx *cub3d);
-// void	draw_square(t_mlx *cub3d, int x, int y, int color);
+void		draw_minimap(t_mlx *cub3d);
+void		draw_square(t_mlx *cub3d, int x, int y, int color);
+void		draw_player(t_mlx *cub3d, int x, int y, int color);
 // void	draw_lines(t_mlx *cub3d);
-// void	my_pixel_put(t_data *img, int x, int y, int color);
 
 /* raycasting.c */
 
@@ -284,5 +289,6 @@ void		draw_sprites(t_mlx *cub3d, t_tex tex);
 void		sort_sprite(t_mlx **cub3d);
 void		init_draw_sprite(t_cam cam, t_sprite sprite, t_draw_sprite *draw);
 void		draw_sprite(t_mlx *cub3d, t_tex tex, t_draw_sprite draw);
+t_tex		change_sprite(t_tex *tex);
 
 #endif

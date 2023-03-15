@@ -2,7 +2,8 @@ NO ./texture/wall_n.xpm
 SO ./texture/wall_s.xpm
 WE ./texture/wall_w.xpm
 EA ./texture/wall_e.xpm
-S ./texture/item.xpm
+S1 ./texture/item.xpm
+S2 ./texture/item.xpm
 
 F 00,153,15
 C 255,255,255

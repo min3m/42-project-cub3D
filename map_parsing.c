@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:20:48 by youngmch          #+#    #+#             */
-/*   Updated: 2023/02/25 19:17:32 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/15 20:56:43 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ bool	map_atoi(char c, int *val)
 	else if (c == 'W')
 		*val = WEST;
 	else if (c == 'E')
+		*val = EAST;
+	else if (c == '7')
 		*val = EAST;
 	else
 		return (false);
@@ -132,6 +134,8 @@ void	map_parsing(t_arg *arg, int fd)
 			i++;
 			ft_lstadd_back(&map_list, ft_lstnew(ft_strdup(tmp), i));
 		}
+		else if (tmp[0] == '\n' && map_list)
+			exit_map(arg, map_list);
 		free(tmp);
 		tmp = get_next_line(fd);
 	}

@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   render_sprite.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:02:37 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/14 21:15:29 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/15 22:03:35 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+t_tex	change_sprite(t_tex *tex)
+{
+	static int	count = 0;
+
+	count++;
+	if (count >= 20 && count < 40)
+		return (tex[1]);
+	else if (count == 40)
+	{
+		count = 0;
+		return (tex[0]);
+	}
+	return (tex[0]);
+}
 
 void	sort_sprite(t_mlx **cub3d)
 {
@@ -74,15 +89,15 @@ void	draw_sprite(t_mlx *cub3d, t_tex tex, t_draw_sprite draw)
 	while (++x < draw.end_x)
 	{
 		tex_x = (int)(256 * (x - (-draw.sp_width / 2 + draw.sp_screen))
-			* tex.width / draw.sp_width) / 256;
+				* tex.width / draw.sp_width) / 256;
 		if (draw.trans_y > 0 && x > 0 && x < WIDTH
 			&& draw.trans_y < cub3d->zbuffer[x])
 		{
 			y = draw.start_y - 1;
 			while (++y < draw.end_y)
 			{
-				tex_y = ((y - draw.s_move) * 256 - HEIGHT * 128 + draw.sp_height * 128)
-					* tex.height / draw.sp_height / 256;
+				tex_y = ((y - draw.s_move) * 256 - HEIGHT * 128 + draw.sp_height
+						* 128) * tex.height / draw.sp_height / 256;
 				color = tex.texture[(int)tex.width * tex_y + tex_x];
 				if ((color & 0x00FFFFFF) != 0)
 					my_pixel_put(&(cub3d->img), x, y, color);

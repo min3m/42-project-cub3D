@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 21:24:22 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/13 21:02:09 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/15 21:45:11 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	load_texture(t_mlx **cub3d)
 {
 	t_data	img;
 
-	(*cub3d)->tex = malloc(sizeof(t_tex) * 5);
+	(*cub3d)->tex = malloc(sizeof(t_tex) * 6);
 	if (!(*cub3d)->tex)
 		game_exit(*cub3d, EXIT_FAILURE);
 	(*cub3d)->tex[0].texture
@@ -56,7 +56,9 @@ void	load_texture(t_mlx **cub3d)
 	(*cub3d)->tex[3].texture
 		= get_texture(*cub3d, (*cub3d)->arg->root.ea, &img, 3);
 	(*cub3d)->tex[4].texture
-		= get_texture(*cub3d, (*cub3d)->arg->root.item, &img, 4);
+		= get_texture(*cub3d, (*cub3d)->arg->root.sprite1, &img, 4);
+	(*cub3d)->tex[5].texture
+		= get_texture(*cub3d, (*cub3d)->arg->root.sprite2, &img, 5);
 }
 
 void	game_exit(t_mlx *cub3d, int flag)

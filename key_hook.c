@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 19:53:25 by youngmin          #+#    #+#             */
-/*   Updated: 2023/03/08 20:58:49 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/15 22:28:12 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ int	key_hook(int keycode, t_mlx *cub3d)
 		move_event(keycode, cub3d);
 	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
 		rotate_event(keycode, cub3d);
-	game_loop(cub3d);
 	return (0);
 }
 
 void	key_hook_event(t_mlx *cub3d)
 {
-	game_loop(cub3d);
+	// game_loop(cub3d);
 	mlx_hook(cub3d->win_ptr, KEY_PRESS, 0, key_hook, cub3d);
 	mlx_hook(cub3d->win_ptr, KEY_EXIT, 0, click_exit, cub3d);
+	mlx_loop_hook(cub3d->mlx_ptr, game_loop, cub3d);
 	mlx_loop(cub3d->mlx_ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:20:48 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/15 20:56:43 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/16 23:51:39 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ bool	map_atoi(char c, int *val)
 	else if (c == 'E')
 		*val = EAST;
 	else if (c == '7')
-		*val = EAST;
+		*val = DOOR_C;
 	else
 		return (false);
 	return (true);

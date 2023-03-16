@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 20:19:17 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/15 21:40:58 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/16 14:50:09 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ void	free_arg(t_arg *arg)
 		free(arg->root.sprite1);
 	if (arg->root.sprite2)
 		free(arg->root.sprite2);
+	if (arg->root.door)
+		free(arg->root.door);
 }
 
 bool	free_split(char **split, int flag)

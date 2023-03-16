@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:07:27 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/15 21:41:29 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/16 14:58:47 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_arg	*init_arg(t_arg *arg)
 	arg->root.ea = NULL;
 	arg->root.sprite1 = NULL;
 	arg->root.sprite2 = NULL;
+	arg->root.door = NULL;
 	arg->floor_rgb = 0;
 	arg->ceiling_rgb = 0;
 	return (arg);
@@ -28,7 +29,7 @@ t_arg	*init_arg(t_arg *arg)
 bool	check_arg(t_arg *arg)
 {
 	if (!arg->root.no || !arg->root.so || !arg->root.we || !arg->root.ea
-		|| !arg->root.sprite1 || !arg->root.sprite2)
+		|| !arg->root.sprite1 || !arg->root.sprite2 || !arg->root.door)
 		return (false);
 	if (!arg->floor_rgb || !arg->ceiling_rgb)
 		return (false);
@@ -70,10 +71,12 @@ bool	get_path(char *tmp, t_arg **arg)
 		(*arg)->root.we = ft_strdup(split[1]);
 	else if (!ft_strncmp("EA", split[0], 3) && !split[2])
 		(*arg)->root.ea = ft_strdup(split[1]);
-	else if (!ft_strncmp("S1", split[0], 2) && !split[2])
+	else if (!ft_strncmp("S1", split[0], 3) && !split[2])
 		(*arg)->root.sprite1 = ft_strdup(split[1]);
-	else if (!ft_strncmp("S2", split[0], 2) && !split[2])
+	else if (!ft_strncmp("S2", split[0], 3) && !split[2])
 		(*arg)->root.sprite2 = ft_strdup(split[1]);
+	else if (!ft_strncmp("DO", split[0], 3) && !split[2])
+		(*arg)->root.door = ft_strdup(split[1]);
 	else if (!ft_strncmp("F", split[0], 2) && !split[2])
 		(*arg)->floor_rgb = get_rgb(split[1]);
 	else if (!ft_strncmp("C", split[0], 2) && !split[2])

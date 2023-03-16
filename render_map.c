@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:07:40 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/15 22:14:35 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/16 23:52:40 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,14 @@ void	draw_texture(t_mlx *cub3d, t_draw draw, t_tex tex, int x)
 	}
 }
 
-void	draw_map(t_mlx *cub3d, t_ray *ray, int x)
+void	draw_map(t_mlx *cub3d, t_ray *ray, int x, int flag)
 {
 	t_draw	draw;
 
 	init_draw(cub3d, &draw);
-	if (ray->hit_side == 1 && ray->raydir_y < 0)
+	if (flag == DOOR_C)
+		draw_texture(cub3d, draw, cub3d->tex[6], x);
+	else if (ray->hit_side == 1 && ray->raydir_y < 0)
 		draw_texture(cub3d, draw, cub3d->tex[0], x);
 	else if (ray->hit_side == 1 && ray->raydir_y >= 0)
 		draw_texture(cub3d, draw, cub3d->tex[1], x);
@@ -94,8 +96,10 @@ void	render_map(t_mlx *cub3d)
 	while (++x < WIDTH)
 	{
 		init_ray(cub3d, &(cub3d->ray), x);
-		where_hit(cub3d, &(cub3d->ray));
-		draw_map(cub3d, &(cub3d->ray), x);
+		if (where_hit(cub3d, &(cub3d->ray)) == 1)
+			draw_map(cub3d, &(cub3d->ray), x, 1);
+		else
+			draw_map(cub3d, &(cub3d->ray), x, DOOR_C);
 		cub3d->zbuffer[x] = cub3d->ray.perpdist;
 	}
 	draw_sprites(cub3d, change_sprite(cub3d->tex));

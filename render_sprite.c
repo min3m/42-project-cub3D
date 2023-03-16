@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:02:37 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/15 22:03:35 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/16 16:54:28 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void	draw_sprites(t_mlx *cub3d, t_tex tex)
 	int				i;
 	t_draw_sprite	draw;
 
+	sprite_init(&cub3d);
 	sort_sprite(&cub3d);
 	i = -1;
 	while (++i < cub3d->sprite_num)

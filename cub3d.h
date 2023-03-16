@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:28:18 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/15 21:59:25 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/16 23:47:29 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,16 @@
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
 # define KEY_EXIT 17
+# define KEY_DOOR 49
+# define KEY_ONE 18
 
 # define NORTH 3
 # define SOUTH 4
 # define WEST 5
 # define EAST 6
 
-# define DOOR_CLOSE 7
-# define DOOR_OPEN 8
+# define DOOR_C 7
+# define DOOR_O 8
 
 # define MOVE_DOWN 64
 
@@ -72,6 +74,7 @@ typedef struct s_files
 	char	*ea;
 	char	*sprite1;
 	char	*sprite2;
+	char	*door;
 }				t_files;
 
 typedef struct s_arg
@@ -174,7 +177,11 @@ typedef struct s_mlx
 	t_ray		ray;
 	double		zbuffer[WIDTH];
 	t_sprite	*sprite;
+	int			mini_ret;
 	int			sprite_num;
+	int			mouse;
+	int			mouse_x;
+	int			mouse_y;
 }				t_mlx;
 
 /* main.c */
@@ -224,7 +231,7 @@ void		free_tex(t_mlx *cub3d);
 /* game_init.c */
 
 t_mlx		*game_init(t_mlx *cub3d, t_arg *arg, char *name);
-void		game_exit(t_mlx *cub3d, int flag);
+void		game_exit(t_mlx *cub3d, int flag, char *string);
 void		load_texture(t_mlx **cub3d);
 int			*get_texture(t_mlx *cub3d, char *path, t_data *img, int index);
 
@@ -236,13 +243,14 @@ void		set_dir(t_cam *cam, int val);
 /* sprite_init.c */
 
 void		sprite_init(t_mlx **cub3d);
-t_sprite	*malloc_sprite(t_mlx **cub3d);
+t_sprite	*malloc_sprite(t_mlx *cub3d);
 
 /* key_hook.c */
 
 void		key_hook_event(t_mlx *cub3d);
 int			key_hook(int keycode, t_mlx *cub3d);
 int			click_exit(t_mlx *cub3d);
+void		mouse_hook(t_mlx **cub3d);
 
 /* draw_minimap.c */
 
@@ -253,7 +261,7 @@ void		draw_player(t_mlx *cub3d, int x, int y, int color);
 
 /* raycasting.c */
 
-void		where_hit(t_mlx *cub3d, t_ray *ray);
+int			where_hit(t_mlx *cub3d, t_ray *ray);
 
 /* set_ray_draw.c */
 
@@ -265,7 +273,7 @@ void		init_draw(t_mlx *cub3d, t_draw *draw);
 
 void		render_map(t_mlx *cub3d);
 void		draw_background(t_mlx *cub3d);
-void		draw_map(t_mlx *cub3d, t_ray *ray, int x);
+void		draw_map(t_mlx *cub3d, t_ray *ray, int x, int flag);
 void		init_pixel(t_mlx *cub3d, t_draw draw, t_tex tex, t_pixel *pixel);
 void		draw_texture(t_mlx *cub3d, t_draw draw, t_tex tex, int x);
 
@@ -290,5 +298,18 @@ void		sort_sprite(t_mlx **cub3d);
 void		init_draw_sprite(t_cam cam, t_sprite sprite, t_draw_sprite *draw);
 void		draw_sprite(t_mlx *cub3d, t_tex tex, t_draw_sprite draw);
 t_tex		change_sprite(t_tex *tex);
+
+/* door_control.c */
+
+void		door_control(t_mlx *cub3d);
+void		no_door(t_mlx **cub3d);
+void		so_door(t_mlx **cub3d);
+void		ea_door(t_mlx **cub3d);
+void		we_door(t_mlx **cub3d);
+
+/* move_mouse.c */
+
+void		move_mouse(t_mlx *cub3d);
+int			ft_abs(int num);
 
 #endif

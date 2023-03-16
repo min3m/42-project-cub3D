@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:22:21 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/02 13:04:52 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/17 00:03:16 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,17 @@ void	check_player_num(t_arg *arg)
 		{
 			if (arg->map[i][j].val >= NORTH && arg->map[i][j].val <= EAST)
 				count++;
+			if (arg->map[i][j].val == DOOR_C || arg->map[i][j].val == DOOR_O)
+				if ((arg->map[i - 1][j].val != 1 || arg->map[i + 1][j].val != 1)
+					&& (arg->map[i][j - 1].val != 1
+						|| arg->map[i][j + 1].val != 1))
+					ft_exit(arg, MAP);
 			if (count >= 2)
 				ft_exit(arg, MAP);
 		}
 	}
+	if (count == 0)
+		ft_exit(arg, MAP);
 }
 
 void	check_valid(t_arg *arg)

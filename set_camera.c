@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 19:09:00 by youngmin          #+#    #+#             */
-/*   Updated: 2023/03/06 21:27:17 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/16 23:29:42 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void	set_cam(t_mlx **cub3d)
 		j = -1;
 		while (++j < (*cub3d)->arg->x_size)
 		{
-			if ((*cub3d)->arg->map[i][j].val >= NORTH)
+			if ((*cub3d)->arg->map[i][j].val >= NORTH
+				&& (*cub3d)->arg->map[i][j].val <= EAST)
 			{
 				(*cub3d)->cam.pos_x = (double)j;
 				(*cub3d)->cam.pos_y = (double)i;
@@ -82,6 +83,6 @@ void	set_cam(t_mlx **cub3d)
 			}
 		}
 	}
-	(*cub3d)->cam.move_speed = 0.2;
+	(*cub3d)->cam.move_speed = 0.1;
 	(*cub3d)->cam.rot_speed = 0.05;
 }

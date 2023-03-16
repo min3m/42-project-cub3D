@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 18:10:29 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/15 21:47:52 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/16 23:52:58 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,14 @@ void	move_forward(t_mlx **cub3d, double dx, double dy)
 	vec_x = dx * (*cub3d)->cam.move_speed;
 	vec_y = dy * (*cub3d)->cam.move_speed;
 	if ((*cub3d)->arg->map[(int)((*cub3d)->cam.pos_y)][(int)
-		((*cub3d)->cam.pos_x + vec_x * 1.1)].val != 1)
+		((*cub3d)->cam.pos_x + vec_x * 1.1)].val != 1
+		&& (*cub3d)->arg->map[(int)((*cub3d)->cam.pos_y)][(int)
+		((*cub3d)->cam.pos_x + vec_x * 1.1)].val != DOOR_C)
 		(*cub3d)->cam.pos_x += vec_x;
 	if ((*cub3d)->arg->map[(int)((*cub3d)->cam.pos_y + vec_y
-			* 1.1)][(int)((*cub3d)->cam.pos_x)].val != 1)
+			* 1.1)][(int)((*cub3d)->cam.pos_x)].val != 1
+			&& (*cub3d)->arg->map[(int)((*cub3d)->cam.pos_y + vec_y
+			* 1.1)][(int)((*cub3d)->cam.pos_x)].val != DOOR_C)
 		(*cub3d)->cam.pos_y += vec_y;
 }
 
@@ -54,10 +58,14 @@ void	move_back(t_mlx **cub3d, double dx, double dy)
 	vec_x = dx * (*cub3d)->cam.move_speed;
 	vec_y = dy * (*cub3d)->cam.move_speed;
 	if ((*cub3d)->arg->map[(int)((*cub3d)->cam.pos_y)][(int)
-		((*cub3d)->cam.pos_x + vec_x * 1.1)].val != 1)
+		((*cub3d)->cam.pos_x + vec_x * 1.1)].val != 1
+		&& (*cub3d)->arg->map[(int)((*cub3d)->cam.pos_y)][(int)
+		((*cub3d)->cam.pos_x + vec_x * 1.1)].val != DOOR_C)
 		(*cub3d)->cam.pos_x += vec_x;
 	if ((*cub3d)->arg->map[(int)((*cub3d)->cam.pos_y + vec_y
-			* 1.1)][(int)((*cub3d)->cam.pos_x)].val != 1)
+			* 1.1)][(int)((*cub3d)->cam.pos_x)].val != 1
+			&& (*cub3d)->arg->map[(int)((*cub3d)->cam.pos_y + vec_y
+			* 1.1)][(int)((*cub3d)->cam.pos_x)].val != DOOR_C)
 		(*cub3d)->cam.pos_y += vec_y;
 }
 
@@ -69,10 +77,14 @@ void	move_left(t_mlx **cub3d, double dx, double dy)
 	vec_x = dx * (*cub3d)->cam.move_speed;
 	vec_y = dy * (*cub3d)->cam.move_speed;
 	if ((*cub3d)->arg->map[(int)((*cub3d)->cam.pos_y)][(int)
-		((*cub3d)->cam.pos_x + vec_x * 1.1)].val != 1)
+		((*cub3d)->cam.pos_x + vec_x * 1.1)].val != 1
+		&& (*cub3d)->arg->map[(int)((*cub3d)->cam.pos_y)][(int)
+		((*cub3d)->cam.pos_x + vec_x * 1.1)].val != DOOR_C)
 		(*cub3d)->cam.pos_x += vec_x;
 	if ((*cub3d)->arg->map[(int)((*cub3d)->cam.pos_y + vec_y
-			* 1.1)][(int)((*cub3d)->cam.pos_x)].val != 1)
+			* 1.1)][(int)((*cub3d)->cam.pos_x)].val != 1
+			&& (*cub3d)->arg->map[(int)((*cub3d)->cam.pos_y + vec_y
+			* 1.1)][(int)((*cub3d)->cam.pos_x)].val != DOOR_C)
 		(*cub3d)->cam.pos_y += vec_y;
 }
 
@@ -84,9 +96,13 @@ void	move_right(t_mlx **cub3d, double dx, double dy)
 	vec_x = dx * (*cub3d)->cam.move_speed;
 	vec_y = dy * (*cub3d)->cam.move_speed;
 	if ((*cub3d)->arg->map[(int)((*cub3d)->cam.pos_y)][(int)
-		((*cub3d)->cam.pos_x + vec_x * 1.1)].val != 1)
+		((*cub3d)->cam.pos_x + vec_x * 1.1)].val != 1
+		&& (*cub3d)->arg->map[(int)((*cub3d)->cam.pos_y)][(int)
+		((*cub3d)->cam.pos_x + vec_x * 1.1)].val != DOOR_C)
 		(*cub3d)->cam.pos_x += vec_x;
 	if ((*cub3d)->arg->map[(int)((*cub3d)->cam.pos_y + vec_y
-			* 1.1)][(int)((*cub3d)->cam.pos_x)].val != 1)
+			* 1.1)][(int)((*cub3d)->cam.pos_x)].val != 1
+			&& (*cub3d)->arg->map[(int)((*cub3d)->cam.pos_y + vec_y
+			* 1.1)][(int)((*cub3d)->cam.pos_x)].val != DOOR_C)
 		(*cub3d)->cam.pos_y += vec_y;
 }

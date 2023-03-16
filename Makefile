@@ -6,7 +6,7 @@
 #    By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 21:27:49 by youngmch          #+#    #+#              #
-#    Updated: 2023/03/15 19:52:27 by youngmch         ###   ########.fr        #
+#    Updated: 2023/03/16 23:00:46 by youngmch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,8 @@ sources1 += render_sprite.c
 sources1 += set_ray_draw.c
 sources1 += move_event.c
 sources1 += rotate_event.c
+sources1 += door_control.c
+sources1 += move_mouse.c
 
 # ---- Bonus ---- #
 

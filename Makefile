@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+         #
+#    By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 21:27:49 by youngmch          #+#    #+#              #
-#    Updated: 2023/03/16 23:00:46 by youngmch         ###   ########.fr        #
+#    Updated: 2023/03/17 19:49:44 by youngmin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ---- NAME ---- #
 
-NAME = cub3d
+NAME = cub3D
 
 FT = ./libft/libft.a
 FTCC = -L./libft -lft
@@ -48,25 +48,25 @@ RED = \033[31m
 
 sources1 :=
 
-sources1 += main.c
-sources1 += path_parsing.c
-sources1 += map_parsing.c
-sources1 += check_valid.c
-sources1 += utils1.c
-sources1 += utils2.c
-sources1 += game_init.c
-sources1 += set_camera.c
-sources1 += sprite_init.c
-sources1 += key_hook.c
-sources1 += draw_minimap.c
-sources1 += raycasting.c
-sources1 += render_map.c
-sources1 += render_sprite.c
-sources1 += set_ray_draw.c
-sources1 += move_event.c
-sources1 += rotate_event.c
-sources1 += door_control.c
-sources1 += move_mouse.c
+sources1 += srcs/main.c
+sources1 += srcs/parse/path_parsing.c
+sources1 += srcs/parse/map_parsing.c
+sources1 += srcs/parse/check_valid.c
+sources1 += srcs/utils/utils1.c
+sources1 += srcs/utils/utils2.c
+sources1 += srcs/init/game_init.c
+sources1 += srcs/init/set_camera.c
+sources1 += srcs/init/sprite_init.c
+sources1 += srcs/init/set_ray_draw.c
+sources1 += srcs/key_hook/key_hook.c
+sources1 += srcs/key_hook/move_event.c
+sources1 += srcs/key_hook/rotate_event.c
+sources1 += srcs/key_hook/door_control.c
+sources1 += srcs/key_hook/move_mouse.c
+sources1 += srcs/render/draw_minimap.c
+sources1 += srcs/render/raycasting.c
+sources1 += srcs/render/render_map.c
+sources1 += srcs/render/render_sprite.c
 
 # ---- Bonus ---- #
 

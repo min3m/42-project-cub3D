@@ -1,13 +1,13 @@
-NO ./texture/wall_n.xpm
-SO ./texture/wall_s.xpm
-WE ./texture/wall_w.xpm
-EA ./texture/wall_e.xpm
-S1 ./texture/item.xpm
-S2 ./texture/item.xpm
-DO ./texture/door.xpm
+NO ./texture/north2.xpm
+SO ./texture/south2.xpm
+WE ./texture/west2.xpm
+EA ./texture/east2.xpm
+S1 ./texture/octo_down.xpm
+S2 ./texture/octo_up.xpm
+DO ./texture/door2.xpm
 
-F 00,153,15
-C 255,255,255
+F 109,140,188
+C 254,255,194
 
 
 

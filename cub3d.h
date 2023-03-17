@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:28:18 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/16 23:47:29 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/17 18:54:58 by youngmin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 
 # define MAP 100
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 960
+# define HEIGHT 540
 
 # define KEY_PRESS 2
 # define KEY_ESC 53
@@ -187,6 +187,7 @@ typedef struct s_mlx
 /* main.c */
 
 int			game_loop(t_mlx *cub3d);
+bool		check_filename(char *filename);
 
 /* path_parsing1.c */
 
@@ -310,6 +311,5 @@ void		we_door(t_mlx **cub3d);
 /* move_mouse.c */
 
 void		move_mouse(t_mlx *cub3d);
-int			ft_abs(int num);
 
 #endif

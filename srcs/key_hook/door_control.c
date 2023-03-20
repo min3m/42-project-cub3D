@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   door_control.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 17:13:54 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/17 19:47:47 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:01:01 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ void	no_door(t_mlx **cub3d)
 		(*cub3d)->arg->map[y + 2][x].val = DOOR_O;
 	else if ((*cub3d)->arg->map[y + 2][x].val == DOOR_O)
 		(*cub3d)->arg->map[y + 2][x].val = DOOR_C;
+	else
+	{
+		(*cub3d)->door = false;
+		return ;
+	}
+	(*cub3d)->door = true;
 }
 
 void	so_door(t_mlx **cub3d)
@@ -44,6 +50,12 @@ void	so_door(t_mlx **cub3d)
 		(*cub3d)->arg->map[y - 2][x].val = DOOR_O;
 	else if ((*cub3d)->arg->map[y - 2][x].val == DOOR_O)
 		(*cub3d)->arg->map[y - 2][x].val = DOOR_C;
+	else
+	{
+		(*cub3d)->door = false;
+		return ;
+	}
+	(*cub3d)->door = true;
 }
 
 void	ea_door(t_mlx **cub3d)
@@ -61,6 +73,12 @@ void	ea_door(t_mlx **cub3d)
 		(*cub3d)->arg->map[y][x + 2].val = DOOR_O;
 	else if ((*cub3d)->arg->map[y][x + 2].val == DOOR_O)
 		(*cub3d)->arg->map[y][x + 2].val = DOOR_C;
+	else
+	{
+		(*cub3d)->door = false;
+		return ;
+	}
+	(*cub3d)->door = true;
 }
 
 void	we_door(t_mlx **cub3d)
@@ -78,6 +96,12 @@ void	we_door(t_mlx **cub3d)
 		(*cub3d)->arg->map[y][x - 2].val = DOOR_O;
 	else if ((*cub3d)->arg->map[y][x - 2].val == DOOR_O)
 		(*cub3d)->arg->map[y][x - 2].val = DOOR_C;
+	else
+	{
+		(*cub3d)->door = false;
+		return ;
+	}
+	(*cub3d)->door = true;
 }
 
 void	door_control(t_mlx *cub3d)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   path_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:07:27 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/17 20:28:09 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/20 17:16:44 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,12 +97,12 @@ void	path_parsing(t_arg *arg, int fd)
 	while (tmp)
 	{
 		if ((!get_path(tmp, &arg) || arg->floor_rgb == -1
-			|| arg->ceiling_rgb == -1) && !(*tmp == '\n'))
+				|| arg->ceiling_rgb == -1) && !(*tmp == '\n'))
 		{
 			free(tmp);
 			free_arg(arg);
 			close(fd);
-			exit(ft_putendl_fd("Wrong map file argument!", 1));
+			exit(ft_putendl_fd("Wrong file argument!", 1));
 		}
 		free(tmp);
 		if (check_arg(arg))

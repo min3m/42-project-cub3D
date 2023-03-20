@@ -7,7 +7,7 @@ S2 ./texture/octo_up.xpm
 DO ./texture/door2.xpm
 
 F 109,140,188
-C 254,255,194
+C 0,3,82
 
 
 

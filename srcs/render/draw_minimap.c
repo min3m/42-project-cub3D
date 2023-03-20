@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/26 13:19:56 by youngmin          #+#    #+#             */
-/*   Updated: 2023/03/17 21:11:23 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/20 13:49:47 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ void	draw_minimap(t_mlx *cub3d)
 		{
 			if ((int)cub3d->cam.pos_x == x && (int)cub3d->cam.pos_y == y)
 				draw_player(cub3d, x * ret, y * ret, 0x6C3BF4);
-			// else if (cub3d->arg->map[y][x].val == -1)
-			// 	draw_square(cub3d, x * ret, y * ret, 0x00CCCC99);
 			else if (cub3d->arg->map[y][x].val == 1)
 				draw_square(cub3d, x * ret, y * ret, 0x000000);
 			else if (cub3d->arg->map[y][x].val == 0)

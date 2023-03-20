@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 21:24:22 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/17 19:47:20 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:16:39 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,9 @@ t_mlx	*game_init(t_mlx *cub3d, t_arg *arg, char *name)
 	cub3d->mouse = -1;
 	cub3d->mouse_x = 0;
 	cub3d->mouse_y = 0;
+	cub3d->door = false;
 	cub3d->sprite = malloc_sprite(cub3d);
+	sprite_init(&cub3d);
 	cub3d->img.img = mlx_new_image(cub3d->mlx_ptr, WIDTH, HEIGHT);
 	cub3d->img.addr = (int *)mlx_get_data_addr(cub3d->img.img, \
 			&cub3d->img.bits_per_pixel, &cub3d->img.line_size, \

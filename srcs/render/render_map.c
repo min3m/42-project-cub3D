@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:07:40 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/17 19:48:45 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:40:28 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ void	draw_texture(t_mlx *cub3d, t_draw draw, t_tex tex, int x)
 		pixel.tex_y = (int)pixel.tex_pos & ((int)tex.height - 1);
 		pixel.tex_pos += pixel.step_tex;
 		color = tex.texture[(int)tex.height * pixel.tex_y + pixel.tex_x];
-		// if (cub3d->ray.hit_side == 1)
-		// 	color = (color >> 1) & 8355711;
 		my_pixel_put(&(cub3d->img), x, y, color);
 	}
 }

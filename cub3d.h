@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:28:18 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/17 18:54:58 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:36:33 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 
 # define MAP 100
 
-# define WIDTH 960
-# define HEIGHT 540
+# define WIDTH 1920
+# define HEIGHT 1080
 
 # define KEY_PRESS 2
 # define KEY_ESC 53
@@ -46,7 +46,7 @@
 # define DOOR_C 7
 # define DOOR_O 8
 
-# define MOVE_DOWN 64
+# define MOVE_DOWN 128
 
 typedef struct s_data
 {
@@ -182,6 +182,7 @@ typedef struct s_mlx
 	int			mouse;
 	int			mouse_x;
 	int			mouse_y;
+	bool		door;
 }				t_mlx;
 
 /* main.c */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:27:14 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/17 19:46:58 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/20 15:40:25 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	game_loop(t_mlx *cub3d)
 	static int	count = 0;
 
 	count++;
-	if (count <= 100)
+	if (count <= 73)
 		return (1);
 	count = 0;
 	if (cub3d->mouse == 1)

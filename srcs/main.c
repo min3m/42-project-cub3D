@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:27:14 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/20 15:40:25 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/22 21:58:14 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,16 @@
 
 int	game_loop(t_mlx *cub3d)
 {
-	static int	count = 0;
-
-	count++;
-	if (count <= 73)
+	if (!cub3d->engine && cub3d->mouse == -1 && !cub3d->door
+		&& !cub3d->sprite_num)
 		return (1);
-	count = 0;
-	if (cub3d->mouse == 1)
-		move_mouse(cub3d);
-	draw_background(cub3d);
-	render_map(cub3d);
 	mlx_put_image_to_window(cub3d->mlx_ptr, cub3d->win_ptr,
 		cub3d->img.img, 0, 0);
+	if (cub3d->mouse == 1)
+		move_mouse(cub3d);
+	get_engine(cub3d);
+	draw_background(cub3d);
+	render_map(cub3d);
 	return (0);
 }
 

@@ -3,33 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   move_event.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 18:10:29 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/17 19:47:52 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/22 20:43:29 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
-
-void	move_event(int keycode, t_mlx *cub3d)
-{
-	double	dx;
-	double	dy;
-
-	dx = cub3d->cam.dir_x / sqrtf(powf(cub3d->cam.dir_x, 2)
-			+ powf(cub3d->cam.dir_y, 2));
-	dy = cub3d->cam.dir_y / sqrtf(powf(cub3d->cam.dir_x, 2)
-			+ powf(cub3d->cam.dir_y, 2));
-	if (keycode == KEY_W)
-		move_forward(&cub3d, dx, dy);
-	else if (keycode == KEY_S)
-		move_back(&cub3d, -dx, -dy);
-	else if (keycode == KEY_A)
-		move_left(&cub3d, dy, -dx);
-	else if (keycode == KEY_D)
-		move_right(&cub3d, -dy, dx);
-}
 
 void	move_forward(t_mlx **cub3d, double dx, double dy)
 {

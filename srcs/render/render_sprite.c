@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_sprite.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 19:02:37 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/17 20:59:15 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/22 19:09:52 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ void	draw_sprite(t_mlx *cub3d, t_tex tex, t_draw_sprite draw)
 	x = draw.start_x - 1;
 	while (++x < draw.end_x)
 	{
-		tex_x = (int)(256 * (x - (-draw.sp_width / 2 + draw.sp_screen))
-				* tex.width / draw.sp_width) / 256;
+		tex_x = (int)((x - (-draw.sp_width / 2 + draw.sp_screen))
+				* tex.width / draw.sp_width);
 		if (draw.trans_y > 0 && x > 0 && x < WIDTH
 			&& draw.trans_y < cub3d->zbuffer[x])
 		{

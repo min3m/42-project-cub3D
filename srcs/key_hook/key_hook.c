@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 19:53:25 by youngmin          #+#    #+#             */
-/*   Updated: 2023/03/20 15:40:37 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/22 21:58:18 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,50 @@ int	key_hook(int keycode, t_mlx *cub3d)
 {
 	if (keycode == KEY_ESC)
 		game_exit(cub3d, EXIT_SUCCESS, "Thanks!\nBy hyeslim & youngmch");
-	else if (keycode == KEY_W || keycode == KEY_S || keycode == KEY_A
-		|| keycode == KEY_D)
-		move_event(keycode, cub3d);
-	else if (keycode == KEY_LEFT || keycode == KEY_RIGHT)
-		rotate_event(keycode, cub3d);
-	else if (keycode == KEY_DOOR)
+	if (keycode == KEY_W)
+		cub3d->engine |= MASK_W;
+	if (keycode == KEY_S)
+		cub3d->engine |= MASK_S;
+	if (keycode == KEY_A)
+		cub3d->engine |= MASK_A;
+	if (keycode == KEY_D)
+		cub3d->engine |= MASK_D;
+	if (keycode == KEY_LEFT)
+		cub3d->engine |= MASK_L;
+	if (keycode == KEY_RIGHT)
+		cub3d->engine |= MASK_R;
+	if (keycode == KEY_DOOR)
 		door_control(cub3d);
-	else if (keycode == KEY_ONE)
+	if (keycode == KEY_ONE)
 		mouse_hook(&cub3d);
-	game_loop(cub3d);
+	return (0);
+}
+
+int	key_release(int keycode, t_mlx *cub3d)
+{
+	if (keycode == KEY_W)
+		cub3d->engine &= ~MASK_W;
+	if (keycode == KEY_S)
+		cub3d->engine &= ~MASK_S;
+	if (keycode == KEY_A)
+		cub3d->engine &= ~MASK_A;
+	if (keycode == KEY_D)
+		cub3d->engine &= ~MASK_D;
+	if (keycode == KEY_LEFT)
+		cub3d->engine &= ~MASK_L;
+	if (keycode == KEY_RIGHT)
+		cub3d->engine &= ~MASK_R;
 	return (0);
 }
 
 void	key_hook_event(t_mlx *cub3d)
 {
+	draw_background(cub3d);
+	render_map(cub3d);
+	mlx_put_image_to_window(cub3d->mlx_ptr, cub3d->win_ptr,
+		cub3d->img.img, 0, 0);
 	mlx_hook(cub3d->win_ptr, KEY_PRESS, 0, key_hook, cub3d);
+	mlx_hook(cub3d->win_ptr, KEY_RELEASE, 0, key_release, cub3d);
 	mlx_hook(cub3d->win_ptr, KEY_EXIT, 0, click_exit, cub3d);
 	mlx_loop_hook(cub3d->mlx_ptr, game_loop, cub3d);
 	mlx_loop(cub3d->mlx_ptr);

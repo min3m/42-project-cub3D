@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+         #
+#    By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/20 21:27:49 by youngmch          #+#    #+#              #
-#    Updated: 2023/03/17 19:49:44 by youngmin         ###   ########.fr        #
+#    Updated: 2023/03/22 20:38:00 by youngmch         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,7 @@ sources1 += srcs/init/sprite_init.c
 sources1 += srcs/init/set_ray_draw.c
 sources1 += srcs/key_hook/key_hook.c
 sources1 += srcs/key_hook/move_event.c
+sources1 += srcs/key_hook/engine.c
 sources1 += srcs/key_hook/rotate_event.c
 sources1 += srcs/key_hook/door_control.c
 sources1 += srcs/key_hook/move_mouse.c

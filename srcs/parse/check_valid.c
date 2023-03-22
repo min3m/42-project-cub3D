@@ -3,14 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:22:21 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/17 19:48:07 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:22:13 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
+
+void	check_texture(t_arg *arg)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < arg->y_size)
+	{
+		j = -1;
+		while (++j < arg->x_size)
+		{
+			if (arg->map[i][j].val == DOOR_C || arg->map[i][j].val == DOOR_O)
+			{
+				if (!arg->root.door)
+					ft_exit(arg, TEXTURE);
+			}
+			else if (arg->map[i][j].val == SPRITE)
+			{
+				if (!arg->root.sprite1 || !arg->root.sprite2)
+					ft_exit(arg, TEXTURE);
+			}
+		}
+	}
+}
 
 void	check_player_num(t_arg *arg)
 {
@@ -38,6 +63,7 @@ void	check_player_num(t_arg *arg)
 	}
 	if (count == 0)
 		ft_exit(arg, MAP);
+	check_texture(arg);
 }
 
 void	check_valid(t_arg *arg)

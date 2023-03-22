@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 21:24:22 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/20 15:16:39 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/22 21:36:51 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	load_texture(t_mlx **cub3d)
 	t_data	img;
 
 	(*cub3d)->tex = malloc(sizeof(t_tex) * 7);
+	(*cub3d)->tex = bzero_texture(*cub3d);
 	if (!(*cub3d)->tex)
 		game_exit(*cub3d, EXIT_FAILURE, "Malloc error!");
 	(*cub3d)->tex[0].texture
@@ -73,12 +74,15 @@ void	load_texture(t_mlx **cub3d)
 		= get_texture(*cub3d, (*cub3d)->arg->root.we, &img, 2);
 	(*cub3d)->tex[3].texture
 		= get_texture(*cub3d, (*cub3d)->arg->root.ea, &img, 3);
-	(*cub3d)->tex[4].texture
-		= get_texture(*cub3d, (*cub3d)->arg->root.sprite1, &img, 4);
-	(*cub3d)->tex[5].texture
-		= get_texture(*cub3d, (*cub3d)->arg->root.sprite2, &img, 5);
-	(*cub3d)->tex[6].texture
-		= get_texture(*cub3d, (*cub3d)->arg->root.door, &img, 6);
+	if ((*cub3d)->arg->root.sprite1)
+		(*cub3d)->tex[4].texture
+			= get_texture(*cub3d, (*cub3d)->arg->root.sprite1, &img, 4);
+	if ((*cub3d)->arg->root.sprite2)
+		(*cub3d)->tex[5].texture
+			= get_texture(*cub3d, (*cub3d)->arg->root.sprite2, &img, 5);
+	if ((*cub3d)->arg->root.door)
+		(*cub3d)->tex[6].texture
+			= get_texture(*cub3d, (*cub3d)->arg->root.door, &img, 6);
 }
 
 void	game_exit(t_mlx *cub3d, int flag, char *string)
@@ -127,6 +131,7 @@ t_mlx	*game_init(t_mlx *cub3d, t_arg *arg, char *name)
 	cub3d->mouse_y = 0;
 	cub3d->door = false;
 	cub3d->sprite = malloc_sprite(cub3d);
+	cub3d->engine = 0;
 	sprite_init(&cub3d);
 	cub3d->img.img = mlx_new_image(cub3d->mlx_ptr, WIDTH, HEIGHT);
 	cub3d->img.addr = (int *)mlx_get_data_addr(cub3d->img.img, \

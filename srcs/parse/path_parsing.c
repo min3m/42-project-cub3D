@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:07:27 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/20 17:16:44 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/22 21:22:19 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ t_arg	*init_arg(t_arg *arg)
 
 bool	check_arg(t_arg *arg)
 {
-	if (!arg->root.no || !arg->root.so || !arg->root.we || !arg->root.ea
-		|| !arg->root.sprite1 || !arg->root.sprite2 || !arg->root.door)
+	if (!arg->root.no || !arg->root.so || !arg->root.we || !arg->root.ea)
 		return (false);
 	if (arg->floor_rgb == -2 || arg->ceiling_rgb == -2)
 		return (false);

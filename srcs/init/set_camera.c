@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_camera.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 19:09:00 by youngmin          #+#    #+#             */
-/*   Updated: 2023/03/17 19:47:27 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/22 21:05:03 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,6 @@ void	set_cam(t_mlx **cub3d)
 			}
 		}
 	}
-	(*cub3d)->cam.move_speed = 0.1;
-	(*cub3d)->cam.rot_speed = 0.05;
+	(*cub3d)->cam.move_speed = 0.05;
+	(*cub3d)->cam.rot_speed = 0.025;
 }

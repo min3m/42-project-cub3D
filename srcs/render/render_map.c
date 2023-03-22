@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 20:07:40 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/20 15:40:28 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/22 21:12:07 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	render_map(t_mlx *cub3d)
 			draw_map(cub3d, &(cub3d->ray), x, DOOR_C);
 		cub3d->zbuffer[x] = cub3d->ray.perpdist;
 	}
-	draw_sprites(cub3d, change_sprite(cub3d->tex));
+	if (cub3d->sprite_num)
+		draw_sprites(cub3d, change_sprite(cub3d->tex));
 	draw_minimap(cub3d);
 }

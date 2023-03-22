@@ -3,11 +3,11 @@ SO ./texture/south2.xpm
 WE ./texture/west2.xpm
 EA ./texture/east2.xpm
 DO ./texture/door2.xpm
-S1 ./texture/item.xpm
-S2 ./texture/item.xpm
+S1 ./texture/octo_down.xpm
+S2 ./texture/octo_up.xpm
 
-F 0,0,0
-C 0,0,0
+F 109,140,188
+C 0,3,82
 
 
 

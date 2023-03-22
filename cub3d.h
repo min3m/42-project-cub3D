@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:28:18 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/20 15:36:33 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:22:04 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@
 # include "../libft/libft.h"
 
 # define MAP 100
+# define TEXTURE 101
 
 # define WIDTH 1920
 # define HEIGHT 1080
 
 # define KEY_PRESS 2
+# define KEY_RELEASE 3
 # define KEY_ESC 53
 # define KEY_W 13
 # define KEY_S 1
@@ -43,10 +45,11 @@
 # define WEST 5
 # define EAST 6
 
+# define SPRITE 2
 # define DOOR_C 7
 # define DOOR_O 8
 
-# define MOVE_DOWN 128
+# define MOVE_DOWN 320
 
 typedef struct s_data
 {
@@ -166,6 +169,16 @@ typedef struct s_sprite
 	double	dist;
 }				t_sprite;
 
+enum e_mask
+{
+	MASK_W = 1<<0,
+	MASK_S = 1<<1,
+	MASK_A = 1<<2,
+	MASK_D = 1<<3,
+	MASK_L = 1<<4,
+	MASK_R = 1<<5
+};
+
 typedef struct s_mlx
 {
 	void		*mlx_ptr;
@@ -183,6 +196,7 @@ typedef struct s_mlx
 	int			mouse_x;
 	int			mouse_y;
 	bool		door;
+	int			engine;
 }				t_mlx;
 
 /* main.c */
@@ -213,6 +227,7 @@ bool		map_atoi(char c, int *value);
 
 void		check_player_num(t_arg *arg);
 void		check_valid(t_arg *arg);
+void		check_texture(t_arg *arg);
 
 /* utils1.c */
 
@@ -221,7 +236,6 @@ bool		free_split(char **split, int flag);
 void		free_arg(t_arg *arg);
 void		free_list(t_list *list);
 void		free_all(t_arg *arg);
-void		print_struct(t_mlx *cub3d); //
 
 /* utils2.c */
 
@@ -229,6 +243,7 @@ void		exit_map(t_arg *arg, t_list *map_list);
 void		ft_exit(t_arg *arg, int flag);
 void		my_pixel_put(t_data *img, int x, int y, int color);
 void		free_tex(t_mlx *cub3d);
+t_tex		*bzero_texture(t_mlx *cub3d);
 
 /* game_init.c */
 
@@ -281,15 +296,18 @@ void		draw_texture(t_mlx *cub3d, t_draw draw, t_tex tex, int x);
 
 /* move_event.c */
 
-void		move_event(int keycode, t_mlx *cub3d);
 void		move_forward(t_mlx **cub3d, double dx, double dy);
 void		move_back(t_mlx **cub3d, double dx, double dy);
 void		move_left(t_mlx **cub3d, double dx, double dy);
 void		move_right(t_mlx **cub3d, double dx, double dy);
 
+/* engine.c */
+void		get_engine(t_mlx *cub3d);
+int			is_set(int engine, enum e_mask mask);
+int			get_moveway(int r1, int r2);
+
 /* rotate_event.c */
 
-void		rotate_event(int keycode, t_mlx *cub3d);
 void		rotate_right(t_mlx **cub3d);
 void		rotate_left(t_mlx **cub3d);
 

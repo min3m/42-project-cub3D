@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_mouse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 22:54:31 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/17 19:47:55 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/22 22:00:44 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ void	move_mouse(t_mlx *cub3d)
 		cub3d->cam.rot_speed = 0.02;
 		while (abs_x > 0)
 		{
-			if (dir)
+			if (!dir)
 				rotate_left(&cub3d);
 			else
 				rotate_right(&cub3d);
 			abs_x -= 25;
 		}
 	}
-	cub3d->cam.rot_speed = 0.05;
+	cub3d->cam.rot_speed = 0.025;
 }

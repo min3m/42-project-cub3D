@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmin <youngmin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:20:48 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/17 19:48:11 by youngmin         ###   ########.fr       */
+/*   Updated: 2023/03/22 21:43:12 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	map_atoi(char c, int *val)
 	else if (c == '1')
 		*val = 1;
 	else if (c == '2')
-		*val = 2;
+		*val = SPRITE;
 	else if (c == 'N')
 		*val = NORTH;
 	else if (c == 'S')

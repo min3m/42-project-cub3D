@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 19:22:21 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/22 22:22:13 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/04/02 15:59:36 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	check_texture(t_arg *arg)
 			}
 			else if (arg->map[i][j].val == SPRITE)
 			{
-				if (!arg->root.sprite1 || !arg->root.sprite2)
+				if (!arg->root.s1 || !arg->root.s2)
 					ft_exit(arg, TEXTURE);
 			}
 		}

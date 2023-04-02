@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 21:24:22 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/22 21:36:51 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/04/02 16:03:00 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ void	load_texture(t_mlx **cub3d)
 		= get_texture(*cub3d, (*cub3d)->arg->root.we, &img, 2);
 	(*cub3d)->tex[3].texture
 		= get_texture(*cub3d, (*cub3d)->arg->root.ea, &img, 3);
-	if ((*cub3d)->arg->root.sprite1)
+	if ((*cub3d)->arg->root.s1)
 		(*cub3d)->tex[4].texture
-			= get_texture(*cub3d, (*cub3d)->arg->root.sprite1, &img, 4);
-	if ((*cub3d)->arg->root.sprite2)
+			= get_texture(*cub3d, (*cub3d)->arg->root.s1, &img, 4);
+	if ((*cub3d)->arg->root.s2)
 		(*cub3d)->tex[5].texture
-			= get_texture(*cub3d, (*cub3d)->arg->root.sprite2, &img, 5);
+			= get_texture(*cub3d, (*cub3d)->arg->root.s2, &img, 5);
 	if ((*cub3d)->arg->root.door)
 		(*cub3d)->tex[6].texture
 			= get_texture(*cub3d, (*cub3d)->arg->root.door, &img, 6);

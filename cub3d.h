@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:28:18 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/22 22:22:04 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/04/02 16:00:16 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ typedef struct s_files
 	char	*so;
 	char	*we;
 	char	*ea;
-	char	*sprite1;
-	char	*sprite2;
+	char	*s1;
+	char	*s2;
 	char	*door;
 }				t_files;
 

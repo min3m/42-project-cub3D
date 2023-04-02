@@ -6,7 +6,7 @@
 /*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 17:07:27 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/22 21:22:19 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/04/02 16:00:38 by youngmch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ t_arg	*init_arg(t_arg *arg)
 	arg->root.so = NULL;
 	arg->root.we = NULL;
 	arg->root.ea = NULL;
-	arg->root.sprite1 = NULL;
-	arg->root.sprite2 = NULL;
+	arg->root.s1 = NULL;
+	arg->root.s2 = NULL;
 	arg->root.door = NULL;
 	arg->floor_rgb = -2;
 	arg->ceiling_rgb = -2;
@@ -62,23 +62,23 @@ bool	get_path(char *tmp, t_arg **arg)
 	char	**split;
 
 	split = ft_split(tmp, ' ');
-	if (!ft_strncmp("NO", split[0], 3) && !split[2])
+	if (!ft_strncmp("NO", split[0], 3) && !split[2] && !(*arg)->root.no)
 		(*arg)->root.no = ft_strdup(split[1]);
-	else if (!ft_strncmp("SO", split[0], 3) && !split[2])
+	else if (!ft_strncmp("SO", split[0], 3) && !split[2] && !(*arg)->root.so)
 		(*arg)->root.so = ft_strdup(split[1]);
-	else if (!ft_strncmp("WE", split[0], 3) && !split[2])
+	else if (!ft_strncmp("WE", split[0], 3) && !split[2] && !(*arg)->root.we)
 		(*arg)->root.we = ft_strdup(split[1]);
-	else if (!ft_strncmp("EA", split[0], 3) && !split[2])
+	else if (!ft_strncmp("EA", split[0], 3) && !split[2] && !(*arg)->root.ea)
 		(*arg)->root.ea = ft_strdup(split[1]);
-	else if (!ft_strncmp("S1", split[0], 3) && !split[2])
-		(*arg)->root.sprite1 = ft_strdup(split[1]);
-	else if (!ft_strncmp("S2", split[0], 3) && !split[2])
-		(*arg)->root.sprite2 = ft_strdup(split[1]);
-	else if (!ft_strncmp("DO", split[0], 3) && !split[2])
+	else if (!ft_strncmp("S1", split[0], 3) && !split[2] && !(*arg)->root.s1)
+		(*arg)->root.s1 = ft_strdup(split[1]);
+	else if (!ft_strncmp("S2", split[0], 3) && !split[2] && !(*arg)->root.s2)
+		(*arg)->root.s2 = ft_strdup(split[1]);
+	else if (!ft_strncmp("DO", split[0], 3) && !split[2] && !(*arg)->root.door)
 		(*arg)->root.door = ft_strdup(split[1]);
-	else if (!ft_strncmp("F", split[0], 2) && !split[2])
+	else if (!ft_strncmp("F", split[0], 2) && (*arg)->floor_rgb == -2)
 		(*arg)->floor_rgb = get_rgb(split[1]);
-	else if (!ft_strncmp("C", split[0], 2) && !split[2])
+	else if (!ft_strncmp("C", split[0], 2) && (*arg)->ceiling_rgb == -2)
 		(*arg)->ceiling_rgb = get_rgb(split[1]);
 	else
 		return (free_split(split, 0));

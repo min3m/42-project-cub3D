@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: youngmch <youngmch@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hyeslim <hyeslim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 18:27:14 by youngmch          #+#    #+#             */
-/*   Updated: 2023/03/22 21:58:14 by youngmch         ###   ########.fr       */
+/*   Updated: 2023/04/14 16:48:37 by hyeslim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ int	game_loop(t_mlx *cub3d)
 
 bool	check_filename(char *filename)
 {
-	char	*temp;
-
-	temp = ft_strchr(filename, '.');
-	if (temp == 0 || ft_strncmp(temp, ".cub", 5))
+	if (ft_strlen(ft_strnstr(filename, ".cub", ft_strlen(filename))) != 4)
 		return (false);
 	return (true);
 }
